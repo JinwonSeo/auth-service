@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.sproutfx.platform.authservice.common.security.mapper.UserMapper">
+    <select id="selectById" resultType="kr.sproutfx.platform.authservice.common.security.model.User">
+        SELECT  A.id,
+                A.nId,
+                A.name,
+                A.email,
+                A.password,
+                A.passwordExpired,
+                A.description,
+                A.isLocked,
+                A.createdOn,
+                A.createUserId,
+                A.lastUpdatedOn,
+                A.lastUpdateUserId
+        FROM    dbo.[User] AS A
+        WHERE   A.isDeleted = 0
+                AND A.id = #{id, mode=IN, jdbcType=VARCHAR}
+    </select>
+    <select id="selectByEmail" resultType="kr.sproutfx.platform.authservice.common.security.model.User">
+        SELECT  A.id,
+                A.nId,
+                A.name,
+                A.email,
+                A.password,
+                A.passwordExpired,
+                A.description,
+                A.isLocked,
+                A.createdOn,
+                A.createUserId,
+                A.lastUpdatedOn,
+                A.lastUpdateUserId
+        FROM    dbo.[User] AS A
+        WHERE   A.isDeleted = 0
+                AND A.email = #{email, mode=IN, jdbcType=VARCHAR}
+    </select>
+</mapper>

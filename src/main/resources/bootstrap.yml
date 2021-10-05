@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: platform-auth-service
+  cloud:
+    config:
+      enabled: true
+      fail-fast: true
+      uri: http://config-service.sproutfx.kr
+      retry:
+        max-attempts: 3
+        max-interval: 5000
